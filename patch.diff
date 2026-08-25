@@ -1,0 +1,40 @@
+--- src/components/Navbar.tsx
++++ src/components/Navbar.tsx
+@@ -4,7 +4,7 @@
+ import Link from 'next/link';
+ import { usePathname, useRouter } from 'next/navigation';
+ import { useAppContext } from '@/context/AppContext';
+-import { Search, Bell, Menu, X, User, LogOut, Code, UserCircle, Users, CheckCircle2, XCircle, ArrowRight, Settings, Moon, History, Eye } from 'lucide-react';
++import { Search, Bell, Menu, X, User, LogOut, Code, UserCircle, Users, CheckCircle2, XCircle, ArrowRight, Settings, Moon, Sun, History, Eye } from 'lucide-react';
+ 
+ export default function Navbar() {
+   const pathname = usePathname();
+@@ -14,7 +14,7 @@
+     allUsers,
+     allProjects,
+     requests,
+-    theme,
++    theme, toggleTheme,
+     highContrast, setHighContrast,
+     fontSize, setFontSize,
+     handleRequestAction,
+@@ -480,6 +480,18 @@
+                 <ArrowRight className="w-4 h-4 text-muted-foreground" />
+               </button>
+ 
++              <div className="flex items-center justify-between p-3 rounded-xl bg-background border border-border">
++                <div className="flex items-center gap-2.5">
++                  {theme === 'dark' ? <Moon className="w-4 h-4 text-accent" /> : <Sun className="w-4 h-4 text-accent" />}
++                  <div>
++                    <p className="font-semibold text-heading">Theme</p>
++                    <p className="text-[11px] text-muted-foreground">Toggle light and dark mode</p>
++                  </div>
++                </div>
++                <button onClick={toggleTheme} className="px-3 py-1 rounded-md bg-muted text-heading text-xs font-semibold hover:bg-border transition">
++                  {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
++                </button>
++              </div>
++
+               <div className="p-3 rounded-xl bg-background border border-border space-y-1">
+                 <p className="font-semibold text-heading">AI Engine Integration</p>
+                 <p className="text-[11px] text-muted-foreground">Google Gemini 2.5 Flash API active for compatibility scoring.</p>
