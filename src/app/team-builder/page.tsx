@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { auth } from '@/lib/firebase';
 import { useApp } from '@/context/AppContext';
 import { TeamBalanceRecommendation, Project, UserProfile } from '@/lib/types';
-import { TeamSearchResult } from '@/lib/gemini';
+import type { TeamSearchResult } from '@/lib/gemini';
 import {
   Sparkles,
   Zap,
