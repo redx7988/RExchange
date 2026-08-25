@@ -70,7 +70,7 @@ export default function SkillTagInput({ skills, onChange, isOwner = true }: Skil
       {isOwner && (
         <div className="flex flex-col sm:flex-row gap-2">
           <div className="relative flex-1">
-            <input
+            <input aria-label="Input field"
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}

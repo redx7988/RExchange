@@ -292,7 +292,7 @@ export default function TeamBuilderPage() {
               <label className="block text-xs font-semibold text-foreground">
                 Your Goals, Preferences, or Hackathon Focus:
               </label>
-              <textarea
+              <textarea aria-label="Text area"
                 rows={3}
                 value={userComment}
                 onChange={(e) => setUserComment(e.target.value)}
@@ -307,7 +307,7 @@ export default function TeamBuilderPage() {
                 Skills You Offer / Target Roles:
               </label>
               <div className="flex gap-2">
-                <input
+                <input aria-label="Input field"
                   type="text"
                   value={skillInput}
                   onChange={(e) => setSkillInput(e.target.value)}
@@ -566,7 +566,7 @@ export default function TeamBuilderPage() {
 
                       {cand && (
                         <div className="flex items-center gap-2">
-                          <img src={cand.avatarUrl} alt={cand.name} className="w-6 h-6 rounded-full object-cover" />
+                          <img loading="lazy" src={cand.avatarUrl} alt={cand.name} className="w-6 h-6 rounded-full object-cover" />
                           <span className="text-xs font-bold text-heading">{cand.name}</span>
                         </div>
                       )}
@@ -591,7 +591,7 @@ export default function TeamBuilderPage() {
                 <label className="block text-xs font-semibold text-foreground mb-1">
                   Describe the teammate you need (natural language):
                 </label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   value={leaderSearchPrompt}
                   onChange={(e) => setLeaderSearchPrompt(e.target.value)}
@@ -601,7 +601,7 @@ export default function TeamBuilderPage() {
               </div>
 
               <div className="flex gap-2">
-                <input
+                <input aria-label="Input field"
                   type="text"
                   value={leaderSkillInput}
                   onChange={(e) => setLeaderSkillInput(e.target.value)}
@@ -655,7 +655,7 @@ export default function TeamBuilderPage() {
                       className="p-3.5 rounded-lg bg-background border border-border flex items-start justify-between gap-3"
                     >
                       <div className="flex items-start gap-2.5 min-w-0">
-                        <img
+                        <img loading="lazy"
                           src={cand.candidateAvatar}
                           alt={cand.candidateName}
                           className="w-8 h-8 rounded-full object-cover ring-1 ring-[#30363d]"

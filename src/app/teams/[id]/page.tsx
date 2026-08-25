@@ -203,7 +203,7 @@ export default function TeamWorkspacePage({ params }: { params: Promise<{ id: st
                 key={member.userId}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-background border border-border"
               >
-                <img
+                <img loading="lazy"
                   src={member.avatarUrl}
                   alt={member.name}
                   className="w-6 h-6 rounded-full object-cover ring-1 ring-slate-700"
@@ -340,7 +340,7 @@ export default function TeamWorkspacePage({ params }: { params: Promise<{ id: st
 
             {/* Add Task Form */}
             <form onSubmit={handleAddTask} className="flex gap-2">
-              <input
+              <input aria-label="Input field"
                 type="text"
                 value={newTaskTitle}
                 onChange={(e) => setNewTaskTitle(e.target.value)}
@@ -454,7 +454,7 @@ export default function TeamWorkspacePage({ params }: { params: Promise<{ id: st
             <form onSubmit={handleAddDemoLink} className="space-y-3 text-xs">
               <div>
                 <label className="block text-slate-300 font-semibold mb-1">Asset Title</label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   required
                   placeholder="e.g. Vercel Production Web Demo, Figma Wireframes"
@@ -466,7 +466,7 @@ export default function TeamWorkspacePage({ params }: { params: Promise<{ id: st
 
               <div>
                 <label className="block text-slate-300 font-semibold mb-1">Resource URL</label>
-                <input
+                <input aria-label="Input field"
                   type="url"
                   required
                   placeholder="https://..."

@@ -206,7 +206,7 @@ export default function ProfilePage() {
         <div className="px-6 pb-6 pt-0 relative">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between -mt-16 sm:-mt-20 gap-4 mb-4">
             <div className="relative inline-block">
-              <img
+              <img loading="lazy"
                 src={currentUser.avatarUrl}
                 alt={currentUser.name}
                 className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover ring-4 ring-[#161b22] shadow-2xl bg-card"
@@ -394,7 +394,7 @@ export default function ProfilePage() {
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
                       <div className="flex -space-x-1.5 overflow-hidden">
                         {endorsers.slice(0, 3).map((e) => (
-                          <img
+                          <img loading="lazy"
                             key={e.id}
                             src={e.avatarUrl}
                             alt={e.name}
@@ -516,7 +516,7 @@ export default function ProfilePage() {
             <form onSubmit={handleSaveIntro} className="space-y-4 text-xs">
               <div>
                 <label className="block text-foreground font-semibold mb-1">Full Name</label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -526,7 +526,7 @@ export default function ProfilePage() {
 
               <div>
                 <label className="block text-foreground font-semibold mb-1">Username / Unique ID</label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -536,7 +536,7 @@ export default function ProfilePage() {
 
               <div>
                 <label className="block text-foreground font-semibold mb-1">Professional Headline</label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   value={headline}
                   onChange={(e) => setHeadline(e.target.value)}
@@ -547,7 +547,7 @@ export default function ProfilePage() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-foreground font-semibold mb-1">Location</label>
-                  <input
+                  <input aria-label="Input field"
                     type="text"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
@@ -556,7 +556,7 @@ export default function ProfilePage() {
                 </div>
                 <div>
                   <label className="block text-foreground font-semibold mb-1">Pronouns</label>
-                  <input
+                  <input aria-label="Input field"
                     type="text"
                     value={pronouns}
                     onChange={(e) => setPronouns(e.target.value)}
@@ -567,7 +567,7 @@ export default function ProfilePage() {
 
               <div>
                 <label className="block text-foreground font-semibold mb-1">College / Organization</label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   value={collegeOrOrg}
                   onChange={(e) => setCollegeOrOrg(e.target.value)}
@@ -578,7 +578,7 @@ export default function ProfilePage() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-foreground font-semibold mb-1">GitHub URL</label>
-                  <input
+                  <input aria-label="Input field"
                     type="url"
                     value={github}
                     onChange={(e) => setGithub(e.target.value)}
@@ -587,7 +587,7 @@ export default function ProfilePage() {
                 </div>
                 <div>
                   <label className="block text-foreground font-semibold mb-1">LinkedIn URL</label>
-                  <input
+                  <input aria-label="Input field"
                     type="url"
                     value={linkedin}
                     onChange={(e) => setLinkedin(e.target.value)}
@@ -628,7 +628,7 @@ export default function ProfilePage() {
             </div>
 
             <form onSubmit={handleSaveAbout} className="space-y-4">
-              <textarea
+              <textarea aria-label="Text area"
                 rows={6}
                 value={about}
                 onChange={(e) => setAbout(e.target.value)}
@@ -670,7 +670,7 @@ export default function ProfilePage() {
             <form onSubmit={handleAddCustomLink} className="space-y-3 text-xs">
               <div>
                 <label className="block text-foreground font-semibold mb-1">Title</label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   required
                   placeholder="e.g. My Hackathon Demo, Research Paper"
@@ -682,7 +682,7 @@ export default function ProfilePage() {
 
               <div>
                 <label className="block text-foreground font-semibold mb-1">URL</label>
-                <input
+                <input aria-label="Input field"
                   type="url"
                   required
                   placeholder="https://..."
@@ -726,7 +726,7 @@ export default function ProfilePage() {
             <form onSubmit={handleAddExperience} className="space-y-3 text-xs">
               <div>
                 <label className="block text-foreground font-semibold mb-1">Role / Project Title</label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   required
                   placeholder="e.g. Lead Frontend Developer / Hackathon Winner"
@@ -738,7 +738,7 @@ export default function ProfilePage() {
 
               <div>
                 <label className="block text-foreground font-semibold mb-1">Organization / Event</label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   required
                   placeholder="e.g. F.AST Hackathon 2026, SRM Lab"
@@ -750,7 +750,7 @@ export default function ProfilePage() {
 
               <div>
                 <label className="block text-foreground font-semibold mb-1">Period</label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   placeholder="e.g. Feb 2026, 2024 - Present"
                   value={newExpPeriod}
@@ -761,7 +761,7 @@ export default function ProfilePage() {
 
               <div>
                 <label className="block text-foreground font-semibold mb-1">Description</label>
-                <textarea
+                <textarea aria-label="Text area"
                   rows={3}
                   placeholder="Key contributions and tech stack..."
                   value={newExpDesc}

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { useApp } from '@/context/AppContext';
@@ -64,7 +64,7 @@ export default function NewProjectPage() {
     setDomains(domains.filter((item) => item !== d));
   };
 
-  const handleAddRole = () => {
+  const handleAddRole = useCallback(() => {
     const newRole: ProjectRole = {
       id: `role-${Date.now()}`,
       title: 'New Role',
@@ -73,7 +73,7 @@ export default function NewProjectPage() {
       filled: false,
     };
     setRoles([...roles, newRole]);
-  };
+  }, [roles]);
 
   const handleRemoveRole = (id: string) => {
     setRoles(roles.filter((r) => r.id !== id));
@@ -156,7 +156,7 @@ export default function NewProjectPage() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim() || !description.trim()) {
       alert('Please fill in the project title and description.');
@@ -197,7 +197,7 @@ export default function NewProjectPage() {
       alert("Error publishing project: " + (err.message || err));
       setIsSubmitting(false);
     }
-  };
+  }, [title, description, tagline, type, eventName, domains, timeline, teamSizeLimit, roles, currentUser, addNewProject, router]);
 
   return (
     <AuthGuard
@@ -251,7 +251,7 @@ export default function NewProjectPage() {
               <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                 Project Title *
               </label>
-              <input
+              <input aria-label="Input field"
                 type="text"
                 required
                 value={title}
@@ -265,7 +265,7 @@ export default function NewProjectPage() {
               <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                 Short Tagline / Hook
               </label>
-              <input
+              <input aria-label="Input field"
                 type="text"
                 value={tagline}
                 onChange={(e) => setTagline(e.target.value)}
@@ -278,7 +278,7 @@ export default function NewProjectPage() {
               <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                 Detailed Description & Hackathon Goals *
               </label>
-              <textarea
+              <textarea aria-label="Text area"
                 required
                 rows={4}
                 value={description}
@@ -312,7 +312,7 @@ export default function NewProjectPage() {
                 <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                   Hackathon / Event Name
                 </label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   value={eventName}
                   onChange={(e) => setEventName(e.target.value)}
@@ -326,7 +326,7 @@ export default function NewProjectPage() {
               <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                 Target Team Size
               </label>
-              <input
+              <input aria-label="Input field"
                 type="number"
                 min={2}
                 max={8}
@@ -343,7 +343,7 @@ export default function NewProjectPage() {
               Domain & Track Tags
             </label>
             <div className="flex gap-2">
-              <input
+              <input aria-label="Input field"
                 type="text"
                 value={domainInput}
                 onChange={(e) => setDomainInput(e.target.value)}
@@ -412,7 +412,7 @@ export default function NewProjectPage() {
                   className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3"
                 >
                   <div className="flex items-center justify-between gap-3">
-                    <input
+                    <input aria-label="Input field"
                       type="text"
                       value={role.title}
                       onChange={(e) => handleUpdateRoleTitle(role.id, e.target.value)}
@@ -451,7 +451,7 @@ export default function NewProjectPage() {
                       ))}
 
                       {/* Quick skill add inputs */}
-                      <input
+                      <input aria-label="Input field"
                         type="text"
                         placeholder="+ add skill (hit Enter)"
                         onKeyDown={(e) => {

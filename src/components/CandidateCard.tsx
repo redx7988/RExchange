@@ -17,7 +17,7 @@ export default function CandidateCard({ candidate }: CandidateCardProps) {
     <div className="rounded-xl bg-card border border-border hover:border-slate-500 transition-all flex flex-col overflow-hidden shadow-sm">
       <div className="p-5 flex gap-4">
         <Link href={`/candidates/${candidate.id}`} className="shrink-0">
-          <img
+          <img loading="lazy"
             src={candidate.avatarUrl || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80'}
             alt={candidate.name}
             className="w-12 h-12 rounded-full object-cover ring-2 ring-background shadow-sm hover:opacity-80 transition-opacity"

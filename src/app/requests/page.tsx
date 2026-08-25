@@ -93,7 +93,7 @@ export default function RequestsPage() {
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div className="flex items-center gap-3">
-                          <img
+                          <img loading="lazy"
                             src={req.fromUserAvatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80'}
                             alt={req.fromUserName}
                             className="w-10 h-10 rounded-full object-cover ring-1 ring-border"
@@ -153,7 +153,7 @@ export default function RequestsPage() {
                       className="p-4 rounded-xl bg-card border border-border flex items-center justify-between opacity-80"
                     >
                       <div className="flex items-center gap-3">
-                        <img
+                        <img loading="lazy"
                           src={req.fromUserAvatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80'}
                           alt={req.fromUserName}
                           className="w-8 h-8 rounded-full object-cover"

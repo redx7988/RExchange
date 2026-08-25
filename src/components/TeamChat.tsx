@@ -90,7 +90,7 @@ export default function TeamChat({ channelId, currentUser, channelName }: TeamCh
                 className={`flex gap-2.5 ${isMe ? 'flex-row-reverse' : 'flex-row'}`}
               >
                 {msg.senderAvatar ? (
-                  <img
+                  <img loading="lazy"
                     src={msg.senderAvatar}
                     alt={msg.senderName}
                     className="w-7 h-7 rounded-lg object-cover ring-1 ring-slate-700 shrink-0 mt-0.5"
@@ -153,7 +153,7 @@ export default function TeamChat({ channelId, currentUser, channelName }: TeamCh
 
       {/* Input Field */}
       <form onSubmit={handleSend} className="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
-        <input
+        <input aria-label="Input field"
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}

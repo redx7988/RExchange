@@ -79,7 +79,7 @@ export default function TeamsPage() {
                       <div className="flex items-center gap-2">
                         {team.members.map((m) => (
                           <div key={m.userId} className="flex items-center gap-1.5 bg-background px-2.5 py-1 rounded-xl border border-border">
-                            <img
+                            <img loading="lazy"
                               src={m.avatarUrl || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80'}
                               alt={m.name}
                               className="w-5 h-5 rounded-full object-cover"

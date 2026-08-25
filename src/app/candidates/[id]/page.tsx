@@ -86,7 +86,7 @@ export default function CandidateDetailPage({ params }: { params: Promise<{ id: 
       <div className="rounded-2xl bg-card border border-border overflow-hidden shadow-xl">
         {/* Cover Banner */}
         <div className="relative h-44 sm:h-52 w-full bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 overflow-hidden">
-          <img
+          <img loading="lazy"
             src={candidate.coverUrl || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80'}
             alt="Cover background"
             className="w-full h-full object-cover opacity-60"
@@ -97,7 +97,7 @@ export default function CandidateDetailPage({ params }: { params: Promise<{ id: 
         <div className="px-6 pb-6 pt-0 relative">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between -mt-16 sm:-mt-20 gap-4 mb-4">
             <div className="relative inline-block">
-              <img
+              <img loading="lazy"
                 src={candidate.avatarUrl}
                 alt={candidate.name}
                 className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover ring-4 ring-[#161b22] shadow-2xl bg-card"
@@ -264,7 +264,7 @@ export default function CandidateDetailPage({ params }: { params: Promise<{ id: 
                     <div className="flex items-center gap-2 text-xs text-slate-400">
                       <div className="flex -space-x-1.5 overflow-hidden">
                         {endorsers.slice(0, 3).map((e) => (
-                          <img
+                          <img loading="lazy"
                             key={e.id}
                             src={e.avatarUrl}
                             alt={e.name}

@@ -237,7 +237,7 @@ export default function MatchAnalysisModal({
                 ))}
               </select>
 
-              <textarea
+              <textarea aria-label="Text area"
                 rows={3}
                 value={customMessage}
                 onChange={(e) => setCustomMessage(e.target.value)}

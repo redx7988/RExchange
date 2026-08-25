@@ -221,7 +221,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               </h2>
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <img
+                  <img loading="lazy"
                     src={project.ownerAvatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80'}
                     alt={project.ownerName}
                     className="w-12 h-12 rounded-2xl object-cover ring-1 ring-border"

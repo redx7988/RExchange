@@ -76,7 +76,7 @@ export default function ProjectCard({
       {/* Footer */}
       <div className="px-5 py-3 bg-background border-t border-border flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <img
+          <img loading="lazy"
             src={project.ownerAvatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80'}
             alt={project.ownerName}
             className="w-5 h-5 rounded-full object-cover ring-1 ring-border"

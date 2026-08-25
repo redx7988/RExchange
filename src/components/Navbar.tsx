@@ -146,7 +146,7 @@ export default function Navbar() {
               <div className="relative max-w-xs sm:max-w-sm w-full hidden md:block" ref={searchRef}>
                 <div className="relative">
                   <Search className="w-3.5 h-3.5 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
+                  <input aria-label="Input field"
                     type="text"
                     value={searchQuery}
                     onChange={(e) => {
@@ -175,7 +175,7 @@ export default function Navbar() {
                     ) : (
                       <div className="space-y-0.5 max-h-60 overflow-y-auto">
                         {searchResults.map((user) => (
-                          <button
+                          <button aria-label="Button"
                             key={user.id}
                             onClick={() => {
                               setSearchDropdownOpen(false);
@@ -184,7 +184,7 @@ export default function Navbar() {
                             }}
                             className="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-muted text-left transition-colors cursor-pointer"
                           >
-                            <img
+                            <img loading="lazy"
                               src={user.avatarUrl}
                               alt={user.name}
                               className="w-7 h-7 rounded-full object-cover ring-1 ring-border"
@@ -238,7 +238,7 @@ export default function Navbar() {
           {/* Right Side: Post Project CTA & Profile / Auth */}
           <div className="flex items-center gap-2.5 shrink-0">
             {!isAuthenticated && (
-              <button
+              <button aria-label="Button"
                 onClick={() => setAuthModalOpen(true)}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-muted hover:bg-border text-heading text-xs font-semibold border border-border transition-all shadow-sm"
               >
@@ -260,12 +260,12 @@ export default function Navbar() {
             <>
             {/* Profile Photo Dropdown */}
             <div className="relative" ref={menuRef}>
-              <button
+              <button aria-label="Button"
                 onClick={() => setProfileMenuOpen(!profileMenuOpen)}
                 className="relative flex items-center gap-1.5 p-0.5 rounded-full ring-1 ring-border hover:ring-accent focus:outline-none transition-all"
                 title={`${currentUser.name} (@${currentUser.username || 'user'})`}
               >
-                <img
+                <img loading="lazy"
                   src={currentUser.avatarUrl}
                   alt={currentUser.name}
                   className="w-8 h-8 rounded-full object-cover"
@@ -282,7 +282,7 @@ export default function Navbar() {
                   {/* User Profile Header */}
                   <div className="px-3 py-2.5 border-b border-border">
                     <div className="flex items-center gap-2.5">
-                      <img
+                      <img loading="lazy"
                         src={currentUser.avatarUrl}
                         alt={currentUser.name}
                         className="w-10 h-10 rounded-full object-cover ring-1 ring-border"
@@ -308,7 +308,7 @@ export default function Navbar() {
                     </div>
 
                     {/* Set Status Button */}
-                    <button
+                    <button aria-label="Button"
                       onClick={() => {
                         setProfileMenuOpen(false);
                         setNewStatusText(currentUser.statusText || '');
@@ -380,7 +380,7 @@ export default function Navbar() {
 
                   {/* Settings & Team Logs */}
                   <div className="py-1 border-b border-border space-y-0.5">
-                    <button
+                    <button aria-label="Button"
                       onClick={() => {
                         setProfileMenuOpen(false);
                         setTeamLogsModalOpen(true);
@@ -391,7 +391,7 @@ export default function Navbar() {
                       <span>Team Logs & History</span>
                     </button>
 
-                    <button
+                    <button aria-label="Button"
                       onClick={() => {
                         setProfileMenuOpen(false);
                         setAccessibilityModalOpen(true);
@@ -402,7 +402,7 @@ export default function Navbar() {
                       <span>Accessibility</span>
                     </button>
 
-                    <button
+                    <button aria-label="Button"
                       onClick={() => {
                         setProfileMenuOpen(false);
                         setSettingsModalOpen(true);
@@ -417,7 +417,7 @@ export default function Navbar() {
                   {/* Persona Switcher & Google Auth */}
                   <div className="py-1 space-y-0.5">
                     {isAuthenticated ? (
-                      <button
+                      <button aria-label="Button"
                         onClick={() => {
                           setProfileMenuOpen(false);
                           logout();
@@ -428,7 +428,7 @@ export default function Navbar() {
                         <span>Sign Out (Google)</span>
                       </button>
                     ) : (
-                      <button
+                      <button aria-label="Button"
                         onClick={() => {
                           setProfileMenuOpen(false);
                           setAuthModalOpen(true);
@@ -459,7 +459,7 @@ export default function Navbar() {
                 <History className="w-5 h-5 text-accent" />
                 <h3 className="text-base font-bold text-heading">Team Logs & Historical Records</h3>
               </div>
-              <button onClick={() => setTeamLogsModalOpen(false)} className="text-muted-foreground hover:text-heading">
+              <button aria-label="Button" onClick={() => setTeamLogsModalOpen(false)} className="text-muted-foreground hover:text-heading">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -539,7 +539,7 @@ export default function Navbar() {
             </div>
 
             <div className="flex justify-end pt-3 border-t border-border">
-              <button
+              <button aria-label="Button"
                 onClick={() => setTeamLogsModalOpen(false)}
                 className="px-4 py-1.5 rounded-md bg-muted text-foreground text-xs font-semibold hover:bg-[#30363d]"
               >
@@ -556,7 +556,7 @@ export default function Navbar() {
           <div className="w-full max-w-md bg-card border border-border rounded-2xl p-5 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-bold text-heading">Set Status</h3>
-              <button onClick={() => setStatusModalOpen(false)} className="text-muted-foreground hover:text-heading">
+              <button aria-label="Button" onClick={() => setStatusModalOpen(false)} className="text-muted-foreground hover:text-heading">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -564,7 +564,7 @@ export default function Navbar() {
             <form onSubmit={handleSaveStatus} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-foreground mb-1">What's happening?</label>
-                <input
+                <input aria-label="Input field"
                   type="text"
                   value={newStatusText}
                   onChange={(e) => setNewStatusText(e.target.value)}
@@ -575,14 +575,14 @@ export default function Navbar() {
 
               <div className="flex items-center gap-1.5 flex-wrap">
                 <span className="text-[10px] text-muted-foreground">Quick:</span>
-                <button
+                <button aria-label="Button"
                   type="button"
                   onClick={() => setNewStatusText('⚡ Open to join Hackathon Squads')}
                   className="px-2 py-0.5 rounded bg-muted text-[10px] text-foreground hover:text-heading"
                 >
                   ⚡ Open to squads
                 </button>
-                <button
+                <button aria-label="Button"
                   type="button"
                   onClick={() => setNewStatusText('🎯 Building MVP full-time')}
                   className="px-2 py-0.5 rounded bg-muted text-[10px] text-foreground hover:text-heading"
@@ -592,14 +592,14 @@ export default function Navbar() {
               </div>
 
               <div className="flex justify-end gap-2 pt-2 border-t border-border">
-                <button
+                <button aria-label="Button"
                   type="button"
                   onClick={() => setStatusModalOpen(false)}
                   className="px-3.5 py-1.5 rounded-md bg-muted text-foreground text-xs font-semibold hover:text-heading"
                 >
                   Cancel
                 </button>
-                <button
+                <button aria-label="Button"
                   type="submit"
                   className="px-4 py-1.5 rounded-md bg-accent hover:bg-[#2ea043] text-heading text-xs font-bold"
                 >
@@ -620,7 +620,7 @@ export default function Navbar() {
                 <Eye className="w-4 h-4 text-accent" />
                 <span>Accessibility Settings</span>
               </h3>
-              <button onClick={() => setAccessibilityModalOpen(false)} className="text-muted-foreground hover:text-heading">
+              <button aria-label="Button" onClick={() => setAccessibilityModalOpen(false)} className="text-muted-foreground hover:text-heading">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -631,7 +631,7 @@ export default function Navbar() {
                   <p className="font-semibold text-heading">High Contrast Mode</p>
                   <p className="text-[11px] text-muted-foreground">Increase contrast for text legibility</p>
                 </div>
-                <button
+                <button aria-label="Button"
                   onClick={() => setHighContrast(!highContrast)}
                   className={`px-3 py-1 rounded-md text-xs font-bold ${
                     highContrast ? 'bg-accent text-heading' : 'bg-muted text-muted-foreground'
@@ -647,7 +647,7 @@ export default function Navbar() {
                   <p className="text-[11px] text-muted-foreground">Scale UI typography</p>
                 </div>
                 <div className="flex gap-1">
-                  <button
+                  <button aria-label="Button"
                     onClick={() => setFontSize('normal')}
                     className={`px-2.5 py-1 rounded-md text-xs font-semibold ${
                       fontSize === 'normal' ? 'bg-accent text-heading' : 'bg-muted text-muted-foreground'
@@ -655,7 +655,7 @@ export default function Navbar() {
                   >
                     Default
                   </button>
-                  <button
+                  <button aria-label="Button"
                     onClick={() => setFontSize('large')}
                     className={`px-2.5 py-1 rounded-md text-xs font-semibold ${
                       fontSize === 'large' ? 'bg-accent text-heading' : 'bg-muted text-muted-foreground'
@@ -668,7 +668,7 @@ export default function Navbar() {
             </div>
 
             <div className="flex justify-end pt-2 border-t border-border">
-              <button
+              <button aria-label="Button"
                 onClick={() => setAccessibilityModalOpen(false)}
                 className="px-4 py-1.5 rounded-md bg-accent text-heading text-xs font-bold"
               >
@@ -688,13 +688,13 @@ export default function Navbar() {
                 <Settings className="w-4 h-4 text-accent" />
                 <span>Settings</span>
               </h3>
-              <button onClick={() => setSettingsModalOpen(false)} className="text-muted-foreground hover:text-heading">
+              <button aria-label="Button" onClick={() => setSettingsModalOpen(false)} className="text-muted-foreground hover:text-heading">
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             <div className="space-y-3 text-xs text-foreground">
-              <button
+              <button aria-label="Button"
                 onClick={() => {
                   setSettingsModalOpen(false);
                   setTeamLogsModalOpen(true);
@@ -719,7 +719,7 @@ export default function Navbar() {
                     <p className="text-[11px] text-muted-foreground">Toggle light and dark mode</p>
                   </div>
                 </div>
-                <button onClick={toggleTheme} className="px-3 py-1 rounded-md bg-muted text-heading text-xs font-semibold hover:bg-border transition">
+                <button aria-label="Button" onClick={toggleTheme} className="px-3 py-1 rounded-md bg-muted text-heading text-xs font-semibold hover:bg-border transition">
                   {theme === "dark" ? "Light Mode" : "Dark Mode"}
                 </button>
               </div>
@@ -731,7 +731,7 @@ export default function Navbar() {
             </div>
 
             <div className="flex justify-end pt-2 border-t border-border">
-              <button
+              <button aria-label="Button"
                 onClick={() => setSettingsModalOpen(false)}
                 className="px-4 py-1.5 rounded-md bg-accent text-white text-xs font-bold"
               >

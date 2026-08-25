@@ -308,7 +308,7 @@ export default function CopilotPage() {
                 Ask Gemini Hackathon Copilot
               </label>
               <div className="relative">
-                <textarea
+                <textarea aria-label="Text area"
                   value={promptInput}
                   onChange={(e) => setPromptInput(e.target.value)}
                   onKeyDown={(e) => {

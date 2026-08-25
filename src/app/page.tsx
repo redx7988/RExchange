@@ -114,7 +114,7 @@ export default function LandingPage() {
                 </div>
               )}
 
-              <button
+              <button aria-label="Sign In with Google"
                 onClick={handleGoogleSignIn}
                 disabled={signingIn || authLoading}
                 className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-2xl bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all border border-slate-300 disabled:opacity-50 cursor-pointer"
