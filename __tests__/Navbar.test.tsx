@@ -17,7 +17,7 @@ jest.mock('@/context/AppContext', () => ({
     theme: 'dark',
     highContrast: false,
     fontSize: 'normal',
-    requests: []
+    requests: { received: [], sent: [] }
   })
 }));
 
