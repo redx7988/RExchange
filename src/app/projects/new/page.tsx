@@ -164,26 +164,37 @@ export default function NewProjectPage() {
     }
 
     setIsSubmitting(true);
+    
     try {
-      const newProj = await addNewProject({
-        ownerId: currentUser.id,
-        ownerName: currentUser.name,
-        ownerAvatar: currentUser.avatarUrl,
-        title,
-        tagline: tagline || title,
-        description,
-        type,
-        eventName: type === 'hackathon' ? eventName : undefined,
-        domain: domains.length > 0 ? domains : ['AI Agents'],
-        timeline,
-        teamSizeLimit,
-        roles,
-        status: 'recruiting',
-      });
+      // Add a 10 second timeout to prevent indefinite hangs if Firebase network fails
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error("Network timeout: Please check your Firebase configuration and database setup.")), 10000)
+      );
+      
+      const newProj = await Promise.race([
+        addNewProject({
+          ownerId: currentUser.id,
+          ownerName: currentUser.name,
+          ownerAvatar: currentUser.avatarUrl,
+          title,
+          tagline: tagline || title,
+          description,
+          type,
+          eventName: type === 'hackathon' ? eventName : '',
+          domain: domains.length > 0 ? domains : ['AI Agents'],
+          timeline,
+          teamSizeLimit,
+          roles,
+          status: 'recruiting',
+        }),
+        timeoutPromise
+      ]);
 
-      router.push(`/projects/${newProj.id}`);
-    } catch (err) {
+      router.push(`/projects/${(newProj as any).id}`);
+    } catch (err: any) {
+
       console.error('Failed to create project:', err);
+      alert("Error publishing project: " + (err.message || err));
       setIsSubmitting(false);
     }
   };
