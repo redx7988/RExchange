@@ -41,7 +41,7 @@ export default function TeamsPage() {
             </div>
             <h3 className="text-lg font-bold text-heading">No active teams yet</h3>
             <p className="text-xs sm:text-sm text-muted-foreground max-w-sm mx-auto">
-              You haven't formed or joined a team yet. Browse open projects or post one to form your squad!
+              You haven&apos;t formed or joined a team yet. Browse open projects or post one to form your squad!
             </p>
             <Link
               href="/discover"

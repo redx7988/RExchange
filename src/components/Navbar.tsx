@@ -170,7 +170,7 @@ export default function Navbar() {
                     </div>
                     {searchResults.length === 0 ? (
                       <div className="p-3 text-center text-xs text-muted-foreground">
-                        No person found for "{searchQuery}"
+                        No person found for &quot;{searchQuery}&quot;
                       </div>
                     ) : (
                       <div className="space-y-0.5 max-h-60 overflow-y-auto">
@@ -563,7 +563,7 @@ export default function Navbar() {
 
             <form onSubmit={handleSaveStatus} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-foreground mb-1">What's happening?</label>
+                <label className="block text-xs font-semibold text-foreground mb-1">What&apos;s happening?</label>
                 <input aria-label="Input field"
                   type="text"
                   value={newStatusText}

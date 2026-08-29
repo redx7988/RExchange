@@ -131,7 +131,7 @@ export default function RequestsPage() {
 
                       {req.message && (
                         <p className="text-xs text-muted-foreground italic bg-background p-3 rounded-xl border border-border">
-                          "{req.message}"
+                          &quot;{req.message}&quot;
                         </p>
                       )}
                     </div>
@@ -189,7 +189,7 @@ export default function RequestsPage() {
 
             {requests.sent.length === 0 ? (
               <div className="p-8 text-center rounded-2xl bg-card border border-border text-muted-foreground text-xs">
-                You haven't sent any match requests yet. Browse projects to join or candidates to invite!
+                You haven&apos;t sent any match requests yet. Browse projects to join or candidates to invite!
               </div>
             ) : (
               requests.sent.map((req) => (
@@ -218,7 +218,7 @@ export default function RequestsPage() {
                   </div>
                   {req.message && (
                     <p className="text-xs text-muted-foreground italic bg-background p-2.5 rounded-xl border border-border">
-                      "{req.message}"
+                      &quot;{req.message}&quot;
                     </p>
                   )}
                 </div>

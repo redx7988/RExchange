@@ -213,7 +213,7 @@ export default function MatchAnalysisModal({
                 </button>
               </div>
               <p className="text-xs text-foreground italic leading-relaxed">
-                "{matchResult.pitchTip}"
+                &quot;{matchResult.pitchTip}&quot;
               </p>
             </div>
           )}
