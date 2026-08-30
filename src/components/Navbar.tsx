@@ -446,9 +446,40 @@ export default function Navbar() {
               )}
             </div>
             </>)}
+
+            {/* Mobile Menu Toggle */}
+            <button
+              aria-label="Toggle Mobile Menu"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-1.5 text-muted-foreground hover:text-heading rounded-md border border-transparent hover:border-border"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden border-t border-border bg-card p-4 space-y-3 shadow-xl">
+          <nav className="flex flex-col gap-2">
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-muted-foreground hover:text-heading hover:bg-muted transition-colors"
+                >
+                  <Icon className="w-5 h-5" />
+                  <span>{link.label}</span>
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+      )}
 
       {/* Team Logs Modal (Settings -> Team Logs) */}
       {teamLogsModalOpen && (
@@ -726,7 +757,7 @@ export default function Navbar() {
 
               <div className="p-3 rounded-xl bg-background border border-border space-y-1">
                 <p className="font-semibold text-heading">AI Engine Integration</p>
-                <p className="text-[11px] text-muted-foreground">Google Gemini 2.5 Flash API active for compatibility scoring.</p>
+                <p className="text-[11px] text-muted-foreground">Google Gemini 3.6 Flash API active for compatibility scoring.</p>
               </div>
             </div>
 

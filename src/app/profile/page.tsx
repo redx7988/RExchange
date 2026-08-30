@@ -40,10 +40,10 @@ export default function ProfilePage() {
 
   // Profile Form States
   const [name, setName] = useState(currentUser.name);
-  const [username, setUsername] = useState(currentUser.username || 'redx7988');
+  const [username, setUsername] = useState(currentUser.username || '');
   const [headline, setHeadline] = useState(currentUser.headline);
-  const [location, setLocation] = useState(currentUser.location || 'Chennai, Tamil Nadu, India');
-  const [pronouns, setPronouns] = useState(currentUser.pronouns || 'he/him');
+  const [location, setLocation] = useState(currentUser.location || '');
+  const [pronouns, setPronouns] = useState(currentUser.pronouns || '');
   const [collegeOrOrg, setCollegeOrOrg] = useState(currentUser.collegeOrOrg || '');
   const [about, setAbout] = useState(currentUser.about || currentUser.bio);
   const [hoursPerWeek, setHoursPerWeek] = useState(currentUser.availability.hoursPerWeek || 20);
@@ -240,7 +240,7 @@ export default function ProfilePage() {
               {currentUser.pronouns && (
                 <span className="text-xs text-muted-foreground">({currentUser.pronouns})</span>
               )}
-              <span className="text-xs text-accent font-mono">@{currentUser.username || 'redx7988'}</span>
+              <span className="text-xs text-accent font-mono">@{currentUser.username || ''}</span>
             </div>
 
             <p className="text-sm text-foreground leading-snug font-medium max-w-2xl">

@@ -27,28 +27,13 @@ export default function NewProjectPage() {
   const [tagline, setTagline] = useState('');
   const [description, setDescription] = useState('');
   const [type, setType] = useState<'hackathon' | 'startup' | 'research' | 'open_source'>('hackathon');
-  const [eventName, setEventName] = useState('F.AST Hackathon 2026');
+  const [eventName, setEventName] = useState('');
   const [domainInput, setDomainInput] = useState('');
-  const [domains, setDomains] = useState<string[]>(['AI Agents', 'FinTech']);
-  const [timeline, setTimeline] = useState('36 hours (Hackathon weekend)');
+  const [domains, setDomains] = useState<string[]>([]);
+  const [timeline, setTimeline] = useState('');
   const [teamSizeLimit, setTeamSizeLimit] = useState(4);
 
-  const [roles, setRoles] = useState<ProjectRole[]>([
-    {
-      id: 'role-1',
-      title: 'Full-Stack Engineer',
-      requiredSkills: [{ name: 'React', minLevel: 'advanced' }, { name: 'Next.js', minLevel: 'advanced' }],
-      experienceLevel: 'intermediate',
-      filled: false,
-    },
-    {
-      id: 'role-2',
-      title: 'AI / Backend Specialist',
-      requiredSkills: [{ name: 'Python', minLevel: 'intermediate' }, { name: 'Gemini API', minLevel: 'intermediate' }],
-      experienceLevel: 'intermediate',
-      filled: false,
-    }
-  ]);
+  const [roles, setRoles] = useState<ProjectRole[]>([]);
 
   const [isSuggesting, setIsSuggesting] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
