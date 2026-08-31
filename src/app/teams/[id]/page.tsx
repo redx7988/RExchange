@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, use, useEffect } from 'react';
+import React, { useState, use, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useApp } from '@/context/AppContext';
 import TeamChat from '@/components/TeamChat';
@@ -42,15 +42,15 @@ export default function TeamWorkspacePage({ params }: { params: Promise<{ id: st
   const [demoType, setDemoType] = useState<TeamDemoLink['type']>('live_demo');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  const fetchTeam = () => {
+  const fetchTeam = useCallback(() => {
     getTeamById(id).then((t) => {
       if (t) setTeam(t);
     });
-  };
+  }, [id]);
 
   useEffect(() => {
     fetchTeam();
-  }, [id]);
+  }, [fetchTeam]);
 
   if (!team) {
     return (

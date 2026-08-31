@@ -10,7 +10,7 @@ jest.mock('next/navigation', () => ({
 
 jest.mock('@/context/AppContext', () => ({
   useApp: () => ({
-    currentUser: { id: 'test-user', statusText: 'Available' },
+    currentUser: { id: 'test-user', name: 'Test User', avatarUrl: '/default-avatar.png', statusText: 'Available' },
     allProjects: [],
     allUsers: [],
     isAuthenticated: true,

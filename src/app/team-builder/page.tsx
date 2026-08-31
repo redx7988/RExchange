@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { auth } from '@/lib/firebase';
 import { useApp } from '@/context/AppContext';
 import { TeamBalanceRecommendation, Project, UserProfile } from '@/lib/types';
@@ -63,7 +63,7 @@ export default function TeamBuilderPage() {
   const selectedProject = allProjects.find((p) => p.id === selectedProjectId) || allProjects[0];
 
   // Handler: Join Team Search with Gemini
-  const handleSearchTeams = async (e?: React.FormEvent) => {
+  const handleSearchTeams = useCallback(async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setIsSearchingTeams(true);
 
@@ -90,14 +90,17 @@ export default function TeamBuilderPage() {
     } finally {
       setIsSearchingTeams(false);
     }
-  };
+  }, [candidateSkills, userComment, currentUser, allProjects]);
+
+  const hasInitialSearchRun = useRef(false);
 
   // Initial trigger for Join mode
   useEffect(() => {
-    if (allProjects.length > 0 && matchingTeams.length === 0) {
+    if (allProjects.length > 0 && matchingTeams.length === 0 && !hasInitialSearchRun.current) {
+      hasInitialSearchRun.current = true;
       handleSearchTeams();
     }
-  }, [allProjects]);
+  }, [allProjects, handleSearchTeams, matchingTeams.length]);
 
   const handleApplyToTeam = async (teamResult: TeamSearchResult) => {
     const proj = allProjects.find((p) => p.id === teamResult.projectId);
