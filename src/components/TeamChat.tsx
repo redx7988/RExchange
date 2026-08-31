@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ChatMessage, UserProfile } from '@/lib/types';
 import { getMessages, sendChatMessage } from '@/lib/firestoreService';
 import { Send, Sparkles, User, MessageSquare } from 'lucide-react';
@@ -17,16 +17,16 @@ export default function TeamChat({ channelId, currentUser, channelName }: TeamCh
   const [isSending, setIsSending] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const fetchMessages = async () => {
+  const fetchMessages = useCallback(async () => {
     const list = await getMessages(channelId);
     setMessages(list);
-  };
+  }, [channelId]);
 
   useEffect(() => {
     fetchMessages();
     const interval = setInterval(fetchMessages, 3000);
     return () => clearInterval(interval);
-  }, [channelId]);
+  }, [fetchMessages]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
