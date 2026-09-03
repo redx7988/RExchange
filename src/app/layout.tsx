@@ -30,7 +30,7 @@ export default function RootLayout({
                 <span>AI Collaborative Team Engine</span>
               </div>
               <div className="flex items-center gap-4 text-muted-foreground">
-                <span>Powered by Google Gemini 3.6 Google Gemini 2.5 & Firestore Firestore</span>
+                <span>Powered by Google Gemini 3.6 & Firestore</span>
                 <span>•</span>
                 <span>F.AST Hackathon 2026</span>
               </div>

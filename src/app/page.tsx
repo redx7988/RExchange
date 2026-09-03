@@ -193,7 +193,7 @@ export default function LandingPage() {
             <p className="text-xs text-muted-foreground mt-0.5">Realtime Firestore Sync</p>
           </div>
           <div className="p-3">
-            <p className="text-2xl sm:text-3xl font-extrabold text-success">Gemini 2.5</p>
+            <p className="text-2xl sm:text-3xl font-extrabold text-success">Gemini 3.6</p>
             <p className="text-xs text-muted-foreground mt-0.5">Deep Semantic Scoring</p>
           </div>
         </div>

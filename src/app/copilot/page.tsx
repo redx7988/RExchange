@@ -146,7 +146,7 @@ export default function CopilotPage() {
               Gemini AI Pitch & Strategy Copilot
             </h1>
             <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded bg-muted text-accent border border-border">
-              Gemini 2.5 Flash
+              Gemini 3.6 Flash
             </span>
           </div>
           <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed">
