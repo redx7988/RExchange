@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import {
   UserProfile,
   Project,
@@ -84,6 +84,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
 
+  const currentUserIdRef = useRef(currentUser.id);
+  useEffect(() => {
+    currentUserIdRef.current = currentUser.id;
+  }, [currentUser.id]);
+
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -96,14 +101,15 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  const loadData = async (userToLoad?: UserProfile) => {
+  const loadData = useCallback(async (userToLoad?: UserProfile) => {
     try {
-      const activeUser = userToLoad || currentUser;
+      const activeUserId = userToLoad?.id || currentUserIdRef.current;
+
       const [users, projects, reqs, teams] = await Promise.all([
         getAllUsers(),
         getAllProjects(),
-        getRequestsForUser(activeUser.id),
-        getTeamsForUser(activeUser.id),
+        getRequestsForUser(activeUserId),
+        getTeamsForUser(activeUserId),
       ]);
 
       setAllUsers(users);
@@ -111,7 +117,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       setRequests(reqs);
       setMyTeams(teams);
 
-      const foundCurrent = users.find(u => u.id === activeUser.id);
+      const foundCurrent = users.find(u => u.id === activeUserId);
       if (foundCurrent) {
         setCurrentUser(foundCurrent);
       }
@@ -120,7 +126,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []); // no longer depends on currentUser
 
   // Auth Listener
   useEffect(() => {
@@ -166,11 +172,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [loadData]);
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [loadData]);
 
   const loginWithGoogle = async () => {
     try {

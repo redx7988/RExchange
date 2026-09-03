@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useApp } from '@/context/AppContext';
 import {
@@ -184,9 +185,11 @@ export default function Navbar() {
                             }}
                             className="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-muted text-left transition-colors cursor-pointer"
                           >
-                            <img loading="lazy"
+                            <Image
                               src={user.avatarUrl}
                               alt={user.name}
+                              width={28}
+                              height={28}
                               className="w-7 h-7 rounded-full object-cover ring-1 ring-border"
                             />
                             <div className="min-w-0 flex-1">
@@ -265,9 +268,11 @@ export default function Navbar() {
                 className="relative flex items-center gap-1.5 p-0.5 rounded-full ring-1 ring-border hover:ring-accent focus:outline-none transition-all"
                 title={`${currentUser.name} (@${currentUser.username || 'user'})`}
               >
-                <img loading="lazy"
+                <Image
                   src={currentUser.avatarUrl}
                   alt={currentUser.name}
+                  width={32}
+                  height={32}
                   className="w-8 h-8 rounded-full object-cover"
                 />
                 {isAuthenticated && (
@@ -282,9 +287,11 @@ export default function Navbar() {
                   {/* User Profile Header */}
                   <div className="px-3 py-2.5 border-b border-border">
                     <div className="flex items-center gap-2.5">
-                      <img loading="lazy"
+                      <Image
                         src={currentUser.avatarUrl}
                         alt={currentUser.name}
+                        width={40}
+                        height={40}
                         className="w-10 h-10 rounded-full object-cover ring-1 ring-border"
                       />
                       <div className="min-w-0 flex-1">
